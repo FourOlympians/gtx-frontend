@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    --clr-dark-a0: #000000;
+    --clr-light-a0: #ffffff;
+    --clr-primary-a0: #e86646;
+    --clr-primary-a10: #ee7859;
+    --clr-primary-a20: #f38a6d;
+    --clr-primary-a30: #f79b80;
+    --clr-primary-a40: #faac95;
+    --clr-primary-a50: #fdbca9;
+    --clr-surface-a0: #121212;
+    --clr-surface-a10: #282828;
+    --clr-surface-a20: #3f3f3f;
+    --clr-surface-a30: #575757;
+    --clr-surface-a40: #717171;
+    --clr-surface-a50: #8b8b8b;
+    --clr-surface-tonal-a0: #251b18;
+    --clr-surface-tonal-a10: #3a302d;
+    --clr-surface-tonal-a20: #504644;
+    --clr-surface-tonal-a30: #665e5b;
+    --clr-surface-tonal-a40: #7e7774;
+    --clr-surface-tonal-a50: #96908f;
+    --clr-success-a0: #22946e;
+    --clr-warning-a0: #a87a2a;
+    --clr-danger-a0: #9c2121;
+    --clr-info-a0: #21498a;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.btn-primary {
+    background-color: var(--clr-primary-a0);
+    color: var(--clr-light-a0);
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-primary-a20);
+}

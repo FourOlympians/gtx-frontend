@@ -34,17 +34,21 @@ function getHtmlEntryFiles(srcDir) {
 }
 
 
-
 export default defineConfig({
+    root: 'src',
     plugins: [
         tailwindcss(),
     ],
+    resolve: {
+        alias: [
+            { find: '@', replacement: path.resolve(__dirname, 'src') },
+        ],
+    },
     build: {
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                ...getHtmlEntryFiles(resolve(__dirname, 'pages'))
-                //login: resolve(__dirname, 'pages/login/index.html'),
+                ...getHtmlEntryFiles(resolve(__dirname, 'src/pages'))
             },
         },
     },
