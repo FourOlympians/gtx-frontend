@@ -3,6 +3,13 @@
 const loginForm = document.getElementById('login-form');                
 
 
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+}
+
+
 loginForm.addEventListener('submit', async (e) => { 
     e.preventDefault();
 
@@ -17,8 +24,10 @@ loginForm.addEventListener('submit', async (e) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
             },
-            body: JSON.stringify({ username: email, password }),
+            body: JSON.stringify({ username, email, password }),
+            credentials: 'include',
         });
 
         if (!response.ok) {
@@ -27,6 +36,7 @@ loginForm.addEventListener('submit', async (e) => {
 
         const data = await response.json();
         console.log(data);
+        window.location.href = '/pages/marketplace/';
     } catch (error) {
         console.error('Error:', error);
     }
