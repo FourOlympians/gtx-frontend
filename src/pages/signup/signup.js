@@ -7,11 +7,13 @@ loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(loginForm);
+    const username = formData.get('username');
     const email = formData.get('email');
     const password = formData.get('password');
 
+    console.log(username, email, password);
     try {
-        const response = await fetch('http://localhost:5000/auth/login', {
+        const response = await fetch('http://localhost:5000/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

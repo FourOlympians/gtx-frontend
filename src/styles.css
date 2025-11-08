@@ -14,7 +14,7 @@
     --clr-primary-a40: #faac95;
     --clr-primary-a50: #fdbca9;
     --clr-surface-a0: #121212;
-    --clr-surface-a10: #282828;
+    --clr-surface-a10: #242020;
     --clr-surface-a20: #3f3f3f;
     --clr-surface-a30: #575757;
     --clr-surface-a40: #717171;
@@ -32,7 +32,7 @@
 
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    background-color: var(--clr-surface-a20);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
