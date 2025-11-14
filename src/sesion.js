@@ -1,5 +1,6 @@
 const sesion_section = document.getElementById('sesion_section');
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 const default_content = `
  <a id="sesion_ancor" href="/pages/login/"
                     class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
@@ -27,7 +28,7 @@ function getCookie(name) {
 
 const cerrar_sesion = async () => {
     try {
-        const response = await fetch('http://localhost:5000/auth/logout', {
+        const response = await fetch(`${apiBaseUrl}/auth/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ const checkSesion = async () => {
     `;
 
 
-    const response = await fetch('http://localhost:5000/auth/verify/token',
+    const response = await fetch(`${apiBaseUrl}/auth/verify/token`,
         {
             method: 'POST',
             headers: {

@@ -9,6 +9,9 @@ function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+console.log(apiBaseUrl)
+
 
 loginForm.addEventListener('submit', async (e) => { 
     e.preventDefault();
@@ -20,7 +23,7 @@ loginForm.addEventListener('submit', async (e) => {
 
     console.log(username, email, password);
     try {
-        const response = await fetch('http://localhost:5000/auth/signup', {
+        const response = await fetch(`${apiBaseUrl}/auth/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
