@@ -1,4 +1,4 @@
-
+import { toast } from 'wc-toast'
 
 const loginForm = document.getElementById('login-form');
 
@@ -8,7 +8,8 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
-
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL 
+console.log(apiBaseUrl)
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -18,7 +19,7 @@ loginForm.addEventListener('submit', async (e) => {
 
     console.log(email, password);
     try {
-        const response = await fetch('http://localhost:5000/auth/login', {
+        const response = await fetch(`${apiBaseUrl}/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,13 +30,22 @@ loginForm.addEventListener('submit', async (e) => {
         });
 
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+
+            if (response.status === 401) {
+                toast.error('Credenciales invalidas. Por favor, intente de nuevo.');
+                return;
+            }
+
+            throw new Error('Datos invalidos')
         }
 
         const data = await response.json();
         console.log(data);
         window.location.href = '/pages/marketplace/';
     } catch (error) {
+
+        toast.error('Fallo al Iniciar Sesión ' + error.message)
+
         console.error('Error:', error);
     }
 })

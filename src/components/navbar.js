@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
 
-    <link rel="stylesheet" href="/styles.css">
-</head>
+const nav_elem = document.querySelector('#nav_menu')
 
-<body>
-    <wc-toast></wc-toast>
-    <nav id="nav_menu" class="bg-(--clr-surface-a10)">
+const nav_content = `
         <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="/gtx_logo.png" class="h-8" alt="Flowbite Logo" />
@@ -40,7 +31,7 @@
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
                 <ul
-                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-[--clr-surface-a10]-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-(--clr-surface-a10) md:dark:bg-[clr-surface-a10]-900 dark:border-gray-700">
+                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-(--clr-surface-a10) md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-(--clr-surface-a10) md:dark:bg-[clr-surface-a10]-900 dark:border-gray-700">
                     <li>
                         <a href="/pages/marketplace/"
                             class="block py-2 px-3 md:p-0 text-white bg-red-700 rounded-sm md:bg-transparent 
@@ -63,55 +54,6 @@
                 </ul>
             </div>
         </div>
-    </nav>
+`
 
-    <section class="flex justify-center items-center align-middle p-10">
-        <div
-            class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-(--clr-surface-a10) dark:border-gray-700">
-            <form class="space-y-6" action="#" id="login-form">
-                <h5 class="text-xl font-medium text-gray-900 dark:text-white">Inicia Sesión con tu Cuenta</h5>
-                <div>
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Correo</label>
-                    <input type="email" name="email" id="email"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500  dark:placeholder-gray-400 dark:text-white"
-                        placeholder="name@company.com" required />
-                </div>
-                <div>
-                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Contraseña
-                    </label>
-                    <input type="password" name="password" id="password" placeholder="••••••••"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        required />
-                </div>
-                <!--<div class="flex items-start">
-                        <div class="flex items-start">
-                            <div class="flex items-center h-5">
-                                <input id="remember" type="checkbox" value=""
-                                    class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-red-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-red-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                                    required />
-                            </div>
-                            <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember
-                                me</label>
-                        </div>
-                        <a href="#" class="ms-auto text-sm text-red-700 hover:underline dark:text-red-500">Lost Password?</a>
-                    </div>-->
-                <button type="submit"
-                    class="w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                    Ingresar
-                </button>
-                <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    Aún sin registrarte? <a href="/pages/signup/"
-                        class="text-blue-700 hover:underline dark:text-(--clr-primary-a10)">Crear Cuenta</a>
-                </div>
-            </form>
-        </div>
-    </section>
-
-
-
-    <script type="module" src="./login.js"></script>
-</body>
-
-</html>
+nav_elem.innerHTML = nav_content
