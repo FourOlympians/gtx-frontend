@@ -4,51 +4,120 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GTX - Ejercicios</title>
-    <link rel="stylesheet" href="./style.css" />
+    <!-- usar la misma hoja global que usas en el proyecto -->
+    <link rel="stylesheet" href="/styles.css" />
   </head>
 
   <body>
-    <header class="header">
-      <h1>Selecciona el grupo muscular</h1>
-      <p>Elige una categoría para ver sus ejercicios disponibles</p>
+    <wc-toast></wc-toast>
+
+ 
+    <nav id="nav_menu" class="bg-(--clr-surface-a10)">
+        <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="/gtx_logo.png" class="h-8" alt="GTX logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">GTX</span>
+            </a>
+
+            <div id="sesion_section" class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <button id="btn_cerrar"
+                    class="text-black  bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 hidden">
+                    Cerrar Sesión
+                </button>
+
+                
+                <a id="ancor_login" href="/src/pages/login/index.html"
+                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                    Iniciar Sesión
+                </a>
+
+                <button data-collapse-toggle="navbar-cta" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-cta" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+                <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-[--clr-surface-a10]-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-(--clr-surface-a10) md:dark:bg-[clr-surface-a10]-900 dark:border-gray-700">
+                    <li>
+                        <a href="/src/pages/marketplace/index.html"
+                            class="block py-2 px-3 md:p-0 text-black bg-red-700 rounded-sm md:bg-transparent 
+                            md:hover:text-red-700 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Marketplace</a>
+                    </li>
+
+                    
+                    <li>
+                        <a href="/src/pages/ejercicios/index.html"
+                            class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                            Ejercicios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/src/pages/signup/index.html"
+                            class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Crear Cuenta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="max-w-5xl mx-auto text-center py-12 px-4">
+      <h1 class="text-4xl md:text-5xl font-semibold">Selecciona el grupo muscular</h1>
+      <p class="mt-2 text-lg text-gray-600">Elige una categoría para ver los ejercicios disponibles</p>
     </header>
 
-    <main class="muscles-container">
-      <div class="muscle-card" data-muscle="pecho">
-        <img src="/pecho.png" alt="Pecho" />
-        <h3>Pecho</h3>
-      </div>
+    <!-- GRID DE TARJETAS:  -->
+    <main class="max-w-6xl mx-auto px-4 pb-12">
+      <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="pecho" tabindex="0" role="button" aria-pressed="false">
+          <img src="/pecho.png" alt="Pecho" class="mx-auto h-28 mb-4" />
+          <h3 class="text-xl font-medium">Pecho</h3>
+        </article>
 
-      <div class="muscle-card" data-muscle="bicep">
-        <img src="/bicep.png" alt="Bíceps" />
-        <h3>Bíceps</h3>
-      </div>
+        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="bicep" tabindex="0" role="button" aria-pressed="false">
+          <img src="/bicep.png" alt="Bíceps" class="mx-auto h-28 mb-4" />
+          <h3 class="text-xl font-medium">Bíceps</h3>
+        </article>
 
-      <div class="muscle-card" data-muscle="tricep">
-        <img src="/tricep.png" alt="Tríceps" />
-        <h3>Tríceps</h3>
-      </div>
+        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="tricep" tabindex="0" role="button" aria-pressed="false">
+          <img src="/tricep.png" alt="Tríceps" class="mx-auto h-28 mb-4" />
+          <h3 class="text-xl font-medium">Tríceps</h3>
+        </article>
 
-      <div class="muscle-card" data-muscle="hombro">
-        <img src="/hombro.png" alt="Hombro" />
-        <h3>Hombro</h3>
-      </div>
+        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="hombro" tabindex="0" role="button" aria-pressed="false">
+          <img src="/hombro.png" alt="Hombro" class="mx-auto h-28 mb-4" />
+          <h3 class="text-xl font-medium">Hombro</h3>
+        </article>
 
-      <div class="muscle-card" data-muscle="espalda">
-        <img src="/espalda.png" alt="Espalda" />
-        <h3>Espalda</h3>
-      </div>
+        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="espalda" tabindex="0" role="button" aria-pressed="false">
+          <img src="/espalda.png" alt="Espalda" class="mx-auto h-28 mb-4" />
+          <h3 class="text-xl font-medium">Espalda</h3>
+        </article>
 
-      <div class="muscle-card" data-muscle="pierna">
-        <img src="/pierna.png" alt="Pierna" />
-        <h3>Pierna</h3>
-      </div>
+        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="cuadricep" tabindex="0" role="button" aria-pressed="false">
+          <img src="/cuadricep.png" alt="cuadricep" class="mx-auto h-28 mb-4" />
+          <h3 class="text-xl font-medium">cuadricep</h3>
+        </article>
+      </section>
+
+      <!-- Contenedor donde montaremos la lista de ejercicios al click -->
+      <section id="ejercicios-list" class="mt-10"></section>
     </main>
 
-    <footer class="footer">
-      <p>© 2025 GTX Gym Training Xtreme</p>
+    <footer class="footer text-center py-6">
+      <p class="text-sm text-gray-500">© 2025 GTX Gym Training Xtreme</p>
     </footer>
 
+  
     <script type="module" src="./ejercicios.js"></script>
   </body>
 </html>
