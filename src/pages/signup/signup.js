@@ -1,5 +1,5 @@
 
-
+import { toast } from 'wc-toast';
 const loginForm = document.getElementById('login-form');                
 
 
@@ -34,7 +34,19 @@ loginForm.addEventListener('submit', async (e) => {
         });
 
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+
+            if (response.status === 400) {
+                toast.error('Datos invalidos. Por favor, verifique e intente de nuevo.');
+                return;
+            }
+
+            if (response.status === 409) {
+                toast.error('El correo electrónico ya está en uso. Por favor, use otro.');  
+                return;
+            }
+
+            toast.error('Fallo al Registrar Usuario');  
+            return;
         }
 
         const data = await response.json();
