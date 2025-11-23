@@ -1,71 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GTX - Ejercicios</title>
-   
-    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GTX - Crear Rutina</title>
+
+    <!-- Tu CSS principal -->
+    <link rel="stylesheet" href="./Style.css" />
   </head>
 
   <body>
+<<<<<<< HEAD
     <wc-toast></wc-toast>
 
  
 
     <nav id="nav_menu" class="bg-(--clr-surface-a10) dark:bg-(--clr-surface-a10)">
     </nav>
+=======
+    <!-- NAV INJECTED BY navbar.js -->
+    <nav id="nav_menu"></nav>
+>>>>>>> f2948e7 (Funcionalidad Crear Rutinas)
 
     <!-- HERO -->
-    <header class="max-w-5xl mx-auto text-center py-12 px-4">
-      <h1 class="text-4xl md:text-5xl font-semibold">Selecciona el grupo muscular</h1>
-      <p class="mt-2 text-lg text-gray-600">Elige una categoría para ver los ejercicios disponibles</p>
+    <header class="hero">
+      <h1>Selecciona el grupo muscular</h1>
+      <p class="muted">Selecciona los musculos a trabajar — minimo 1, maximo 4</p>
+      <div id="selection-info" class="muted">Seleccionados: <span id="sel-count">0</span> / 4</div>
     </header>
 
-    <!-- GRID DE TARJETAS:  -->
-    <main class="max-w-6xl mx-auto px-4 pb-12">
-      <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="pecho" tabindex="0" role="button" aria-pressed="false">
-          <img src="/pecho.png" alt="Pecho" class="mx-auto h-28 mb-4" />
-          <h3 class="text-xl font-medium">Pecho</h3>
-        </article>
+    <!-- GRID DE MUSCULOS -->
+    <main class="container">
+      <section id="muscles-grid" class="muscles-grid"></section>
 
-        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="bicep" tabindex="0" role="button" aria-pressed="false">
-          <img src="/bicep.png" alt="Bíceps" class="mx-auto h-28 mb-4" />
-          <h3 class="text-xl font-medium">Bíceps</h3>
-        </article>
+      <div class="controls">
+        <button id="btn-next-to-exercises" class="btn primary" disabled>Siguiente</button>
+      </div>
 
-        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="tricep" tabindex="0" role="button" aria-pressed="false">
-          <img src="/tricep.png" alt="Tríceps" class="mx-auto h-28 mb-4" />
-          <h3 class="text-xl font-medium">Tríceps</h3>
-        </article>
+      <!-- PANEL: BASICOS Y VARIANTES -->
+      <section id="panel-exercises" class="panel hidden">
+        <header>
+          <h2>Musculo: <span id="panel-muscle-name"></span></h2>
+          <p class="muted">Selecciona 1 basico y hasta 2 variantes</p>
+        </header>
 
-        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="hombro" tabindex="0" role="button" aria-pressed="false">
-          <img src="/hombro.png" alt="Hombro" class="mx-auto h-28 mb-4" />
-          <h3 class="text-xl font-medium">Hombro</h3>
-        </article>
+        <h3>Basicos</h3>
+        <div id="basics-grid" class="card-grid"></div>
 
-        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="espalda" tabindex="0" role="button" aria-pressed="false">
-          <img src="/espalda.png" alt="Espalda" class="mx-auto h-28 mb-4" />
-          <h3 class="text-xl font-medium">Espalda</h3>
-        </article>
+        <h3>Variantes</h3>
+        <div id="variants-grid" class="card-grid"></div>
 
-        <article class="muscle-card card p-6 rounded-xl shadow-sm text-center cursor-pointer" data-muscle="cuadricep" tabindex="0" role="button" aria-pressed="false">
-          <img src="/cuadricep.png" alt="cuadricep" class="mx-auto h-28 mb-4" />
-          <h3 class="text-xl font-medium">cuadricep</h3>
-        </article>
+        <div class="controls between">
+          <button id="btn-prev-muscle" class="btn">Anterior</button>
+          <button id="btn-next-muscle" class="btn primary" disabled>Siguiente musculo</button>
+        </div>
       </section>
 
-      <!-- Contenedor donde montaremos la lista de ejercicios al click -->
-      <section id="ejercicios-list" class="mt-10"></section>
+      <!-- PANEL: RESUMEN -->
+      <section id="panel-summary" class="panel hidden">
+        <h2>Resumen</h2>
+        <label class="muted">Nombre de la rutina</label>
+        <input id="rutina-name" placeholder="Ej: Pecho y Pierna - 3 dias" />
+
+        <div id="summary-list" class="summary"></div>
+
+        <div class="controls between">
+          <button id="btn-edit" class="btn">Editar</button>
+          <button id="btn-create" class="btn primary">Crear Rutina</button>
+        </div>
+
+        <div id="result-message" class="muted"></div>
+      </section>
     </main>
 
-    <footer class="footer text-center py-6">
-      <p class="text-sm text-gray-500">© 2025 GTX Gym Training Xtreme</p>
+    <footer class="footer">
+      <p>© 2025 GTX Gym Training Xtreme</p>
     </footer>
 
+<<<<<<< HEAD
   
     <script type="module" src="./ejercicios.js"></script>
     <script type="module" src="../../components/navbar.js"></script>
+=======
+    <!-- Carga navbar -->
+    <script src="/src/components/navbar.js" defer></script>
+
+    <!-- Carga tu JS -->
+    <script src="./ejercicios.js" defer></script>
+>>>>>>> f2948e7 (Funcionalidad Crear Rutinas)
   </body>
 </html>
