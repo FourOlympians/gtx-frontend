@@ -30,7 +30,7 @@
     --clr-danger-a0: #9c2121;
     --clr-info-a0: #21498a;
 
-    color-scheme: dark;
+    color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: var(--clr-surface-a20);
 

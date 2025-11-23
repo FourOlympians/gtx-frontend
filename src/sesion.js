@@ -77,7 +77,7 @@ const checkSesion = async () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                 "X-CSRF-TOKEN": getCookie("csrf_access_token"), 
+                'X-CSRF-TOKEN': getCookie("csrf_access_token"), 
             },
             credentials: 'include',
             
