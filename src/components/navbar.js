@@ -22,7 +22,11 @@ const links = [
     {   
         label: 'Ejercicios',
         href: '/pages/ejercicios/'
-    }  
+    },  
+    {
+        label: 'Crear Rutina',
+        href: '/pages/Crear_Rutina/'
+    }
 ]
 
 

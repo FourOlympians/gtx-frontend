@@ -6,7 +6,7 @@ console.log("Crear_rutina.js cargado ✅");
 const API_MUSCULOS = '/api/musculos';
 const API_EJERCICIOS = '/api/ejercicios';
 const API_CREATE = '/rutinas/crear';
-const PLACEHOLDER = '/mnt/data/5bdb8735-d91b-484d-9ff7-95097dc91852.png'; // imagen subida (fallback)
+
 const MAX_MUSCLES = 4;
 const MIN_MUSCLES = 1;
 
@@ -80,14 +80,14 @@ async function loadMuscles(){
   renderMuscles();
 }
 
-function renderMuscles(){
+function renderMuscles() {
   musclesGrid.innerHTML = '';
   state.muscles.forEach(m => {
     const card = document.createElement('article');
     card.className = 'muscle-card';
     card.dataset.muscle = m.musculo;
     card.innerHTML = `
-      <img src="${escapeHtml(m.imagen || PLACEHOLDER)}" alt="${escapeHtml(m.musculo)}" onerror="this.src='${PLACEHOLDER}'" />
+      <img src="${escapeHtml(m.imagen)}" alt="${escapeHtml(m.musculo)}" />
       <h3>${escapeHtml(m.musculo)}</h3>
     `;
     card.addEventListener('click', () => toggleMuscle(card, m.musculo));
@@ -95,6 +95,7 @@ function renderMuscles(){
   });
   updateSelectionUI();
 }
+
 
 function toggleMuscle(card, muscle){
   const idx = state.selected.indexOf(muscle);
@@ -211,12 +212,12 @@ async function renderExerciseStep(){
 }
 
 /* ---------- tarjetas ejercicios ---------- */
-function createExerciseCard(e){
+function createExerciseCard(e) {
   const el = document.createElement('div');
   el.className = 'card';
   el.dataset.eid = e.id;
   el.innerHTML = `
-    <img class="thumb" src="${escapeHtml(e.imagen || PLACEHOLDER)}" alt="${escapeHtml(e.nombre)}" onerror="this.src='${PLACEHOLDER}'" />
+    <img class="thumb" src="${escapeHtml(e.imagen)}" alt="${escapeHtml(e.nombre)}" />
     <div class="body">
       <div class="title">${escapeHtml(e.nombre)}</div>
       <div class="meta">${escapeHtml(e.tipo || '')}</div>
@@ -224,6 +225,7 @@ function createExerciseCard(e){
   `;
   return el;
 }
+
 
 /* ---------- lógica selección básico (solo 1) ---------- */
 function selectBasic(muscle, id, cardEl){
@@ -364,11 +366,26 @@ function showResult(msg, isError=false){
 function mockEjercicios(muscle){
   const base = Math.abs(hash(muscle)) % 500;
   return [
-    { id: base+1, nombre: `${muscle} - Básico 1`, tipo: 'basico', imagen: PLACEHOLDER },
-    { id: base+2, nombre: `${muscle} - Básico 2`, tipo: 'basico', imagen: PLACEHOLDER },
-    { id: base+10, nombre: `${muscle} - Variante 1`, tipo: 'variacion', imagen: PLACEHOLDER },
-    { id: base+11, nombre: `${muscle} - Variante 2`, tipo: 'variacion', imagen: PLACEHOLDER }
+    { id: base+1,  nombre: `${muscle} - Básico 1`,   tipo: 'basico',    imagen: '' },
+    { id: base+2,  nombre: `${muscle} - Básico 2`,   tipo: 'basico',    imagen: '' },
+    { id: base+10, nombre: `${muscle} - Variante 1`, tipo: 'variacion', imagen: '' },
+    { id: base+11, nombre: `${muscle} - Variante 2`, tipo: 'variacion', imagen: '' }
   ];
 }
-function hash(s){ let h=0; for(let i=0;i<s.length;i++) h=(h<<5)-h+s.charCodeAt(i); return h }
-function escapeHtml(s){ return String(s || '').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function hash(s){ 
+  let h = 0; 
+  for(let i = 0; i < s.length; i++) 
+    h = (h<<5) - h + s.charCodeAt(i); 
+  return h; 
+}
+
+function escapeHtml(s){ 
+  return String(s || '').replace(/[&<>"]/g, c => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;'
+  }[c])); 
+}
+
