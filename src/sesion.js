@@ -20,9 +20,9 @@ const default_content = `
 `;
 
 function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(";").shift();
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
 
@@ -71,38 +71,49 @@ const checkSesion = async () => {
         </button>
     `;
 
+    try {
 
-    const response = await fetch(`${apiBaseUrl}/auth/verify/token`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': getCookie("csrf_access_token"), 
-            },
-            credentials: 'include',
-            
+
+
+        const response = await fetch(`${apiBaseUrl}/auth/verify/token`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': getCookie("csrf_access_token"),
+                },
+                credentials: 'include',
+
+            }
+        )
+
+        if (response.ok) {
+            const data = await response.json();
+            const btn = document.querySelector('#btn_cerrar');
+            const ancor = document.querySelector('#ancor_login');
+
+            btn.classList.remove('hidden');
+            ancor.classList.add('hidden');
+            console.log(data);
+            //sesion_section.innerHTML += button;
+            //const msg = document.querySelector(".msg")
+            //msg.textContent = "Bienvenido a nuestro menu de ventas!"
+
+            localStorage.setItem("login_status", "login-success");
+        } else {
+
+            //sesion_section.innerHTML = default_content;
+            localStorage.setItem("login_status", "login-failed");
+
+            const msg = document.querySelector(".msg")
+
+            msg.textContent = "No has iniciado sesion. Favor de ingresar su cuenta"
         }
-    )
-
-    if (response.ok) {
-        const data = await response.json();
-        const btn = document.querySelector('#btn_cerrar');
-        const ancor = document.querySelector('#ancor_login');
-
-        btn.classList.remove('hidden');
-        ancor.classList.add('hidden');
-        //sesion_section.innerHTML += button;
-        //const msg = document.querySelector(".msg")
-        //msg.textContent = "Bienvenido a nuestro menu de ventas!"
-
-        localStorage.setItem("login_status", "login-success");
-    } else {
-
-        //sesion_section.innerHTML = default_content;
+    } catch (e) {
+        console.log(e);
         localStorage.setItem("login_status", "login-failed");
-
         const msg = document.querySelector(".msg")
-        
+
         msg.textContent = "No has iniciado sesion. Favor de ingresar su cuenta"
     }
 

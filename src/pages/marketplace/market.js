@@ -83,6 +83,8 @@ async function loadProducts() {
         if (localStorage.getItem("login_status") === "login-success") {
             const layout = $('#layout_productos')
             layout.classList.remove('hidden')
+        } else {
+            return;
         }
 
         const resp = await fetch(`${apiBaseUrl}/productos`);
