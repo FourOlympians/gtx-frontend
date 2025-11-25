@@ -20,12 +20,12 @@ const links = [
         href: '#'
     },  
     {   
-        label: 'Ejercicios',
+        label: 'Crear Rutina',
         href: '/pages/ejercicios/'
     },  
     {
-        label: 'Crear Rutina',
-        href: '/pages/Crear_Rutina/'
+        label: 'Ejercicios',
+        href: '/pages/Lista_ejercicios/'
     }
 ]
 
