@@ -9,7 +9,6 @@ function getCookie(name) {
 }
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL 
-console.log(apiBaseUrl)
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -40,7 +39,7 @@ loginForm.addEventListener('submit', async (e) => {
         }
 
         const data = await response.json();
-        console.log(data);
+        localStorage.setItem("login_status", "login-success");
         window.location.href = '/pages/marketplace/';
     } catch (error) {
 

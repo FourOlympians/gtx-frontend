@@ -50,7 +50,7 @@ loginForm.addEventListener('submit', async (e) => {
         }
 
         const data = await response.json();
-        console.log(data);
+        localStorage.setItem("login_status", "login-success");
         window.location.href = '/pages/marketplace/';
     } catch (error) {
         console.error('Error:', error);

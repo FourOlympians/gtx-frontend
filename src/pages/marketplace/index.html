@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
     <title>Marketplace</title>
 </head>
-<body>
 
-   <nav id="nav_menu" class="bg-(--clr-surface-a10) dark:bg-(--clr-surface-a10)">
+<body>
+    <wc-toast></wc-toast>
+
+    <nav id="nav_menu" class="bg-(--clr-surface-a10) dark:bg-(--clr-surface-a10)">
     </nav>
 
 
-    <section class="flex justify-center items-center flex-col">
-        <h1 class="text-3xl">Market!</h1>
+    <div class="flex justify-center align-middle self-center">
         <p class="msg"></p>
+    </div>
+    <div id="layout_productos" class="hidden"> 
 
-    </section>
+        <section class="flex justify-center items-center flex-col">
+    
+            <form class="md:w-[50%] w-[80%]  ">
+                <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Buscar</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <input type="search" id="search"
+                        class="block w-full p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+                        placeholder="Producto a buscar: "" required />
+                    <button type="button"
+                        class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none dark:bg-red-600">Buscar</button>
+                </div>
+            </form>
+    
+            <div>
+                <ul id="lista_productos"></ul>
+            </div>
+            
+        </section>
+    </div>    
 
     <script type="module" src="market.js"></script>
     <script type="module" src="../../components/navbar.js"></script>
-    <script type="module" src="/sesion.js"></script>
+    <script type="module" src="/sesion.js" ></script>
 </body>
+
 </html>
