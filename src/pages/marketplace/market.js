@@ -7,7 +7,9 @@ import { toast } from "wc-toast";
  * @returns {Element}
  */
 const $ = (arg) => document.querySelector(arg);
+const form = $('#form_search');
 let productos = []
+
 const createProductos = (productos) => {
   return `
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
@@ -40,6 +42,31 @@ const createProductos = (productos) => {
   `;
 };
 
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    let query = formData.get('query_search');
+
+    //if (query === undefined || query === ""){
+    //    toast.error('Ingresa una busqueda valida')
+    //    return;
+    //}
+
+    try {
+        const resp = await fetch(`${apiBaseUrl}/productos/search?q=${query}`)
+        const data = await resp.json()
+
+        productos = data;
+        const html = createProductos(productos);
+        renderProductos(html);
+        
+    } catch (error) {
+        toast.error('Fallo al buscar los productos')
+    }
+
+});
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL 
 
