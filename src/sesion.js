@@ -92,13 +92,14 @@ const checkSesion = async () => {
         btn.classList.remove('hidden');
         ancor.classList.add('hidden');
         //sesion_section.innerHTML += button;
-        const msg = document.querySelector(".msg")
-        msg.textContent = "Bienvenido a nuestro menu de ventas!"
+        //const msg = document.querySelector(".msg")
+        //msg.textContent = "Bienvenido a nuestro menu de ventas!"
 
-        console.log(data);
+        localStorage.setItem("login_status", "login-success");
     } else {
 
         //sesion_section.innerHTML = default_content;
+        localStorage.setItem("login_status", "login-failed");
 
         const msg = document.querySelector(".msg")
         
