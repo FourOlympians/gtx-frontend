@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GTX - Mostrar Ejercicios</title>
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- tu CSS local -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-[#0f0f0f] text-white min-h-screen">
+
+  <!-- NAV (inyectado por src/components/navbar.js) -->
+  <nav id="nav_menu"></nav>
+
+  <!-- Contenedor principal -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- HERO / Pregunta -->
+    <header class="text-center mb-8">
+      <h1 class="text-3xl font-bold">¿De qué músculo quieres ver los ejercicios?</h1>
+      <p class="text-gray-300 mt-2">Selecciona un músculo y pulsa <strong>Siguiente</strong> para ver sus ejercicios.</p>
+      <div class="mt-2 text-gray-400">Seleccionado: <span id="selected-muscle-name">—</span></div>
+    </header>
+
+    <!-- Grid de músculos (llenado por JS) -->
+    <section id="muscles-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6"></section>
+
+    <!-- Botón siguiente -->
+    <div class="flex justify-center mb-8">
+      <button id="btn-next" class="btn-primary px-6 py-3 rounded-full disabled:opacity-50" disabled>Siguiente</button>
+    </div>
+
+    <!-- Sección de ejercicios (oculta hasta que se elija músculo) -->
+    <section id="exercises-section" class="hidden">
+      <header class="mb-4">
+        <h2 id="exercises-title" class="text-2xl font-semibold">Ejercicios</h2>
+        <p id="exercises-sub" class="text-gray-300">Mira los ejemplos y pulsa <em>Ver toda la información</em> para ver más detalles.</p>
+      </header>
+
+      <!-- Grid de tarjetas de ejercicios -->
+      <div id="exercises-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <!-- Volver -->
+      <div class="flex justify-between items-center mt-8">
+        <button id="btn-back" class="btn-secondary px-5 py-2 rounded-full">Volver</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de detalle -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60">
+    <div class="bg-[#0b0b0b] max-w-4xl w-full rounded-xl p-6 mx-4">
+      <div class="flex justify-between items-start">
+        <h3 id="modal-title" class="text-xl font-bold">Nombre del ejercicio</h3>
+        <button id="modal-close" class="text-gray-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="text-sm text-gray-300 mb-2 font-semibold">INICIO DEL MOVIMIENTO</div>
+          <img id="modal-img-start" src="" alt="Inicio" class="w-full h-72 object-cover rounded-lg bg-gray-800" />
+        </div>
+        <div>
+          <div class="text-sm text-gray-300 mb-2 font-semibold">FINAL DEL MOVIMIENTO</div>
+          <img id="modal-img-end" src="" alt="Final" class="w-full h-72 object-cover rounded-lg bg-gray-800" />
+        </div>
+      </div>
+
+      <div class="mt-4 text-gray-200">
+        <p id="modal-descripcion" class="mb-2"></p>
+        <div class="text-sm text-gray-400">
+          <span id="modal-musculo"></span> • <span id="modal-tipo"></span>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-end">
+        <button id="modal-close-2" class="btn-primary px-4 py-2 rounded-full">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+    <script type="module" src="../../components/navbar.js"></script>
+    <script type="module" src="./Lista_ejercicios.js"></script>
+</body>
+</html>
