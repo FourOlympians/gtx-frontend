@@ -7,18 +7,18 @@ const links = [
         label: 'Marketplace',       
         href: '/pages/marketplace/'
     },
-    {
-        label: 'Sobre Nosotros',
-        href: '#'
-    }, 
-    {    
-        label: 'Services',  
-        href: '#'
-    }, 
-    {
-        label: 'Contact',
-        href: '#'
-    },  
+    //{
+    //    label: 'Sobre Nosotros',
+    //    href: '#'
+    //}, 
+    //{    
+    //    label: 'Services',  
+    //    href: '#'
+    //}, 
+    //{
+    //    label: 'Contact',
+    //    href: '#'
+    //},  
     {   
         label: 'Crear Rutina',
         href: '/pages/ejercicios/'

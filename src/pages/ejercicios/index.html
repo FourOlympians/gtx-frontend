@@ -18,63 +18,65 @@
     </nav>  
 
 
- 
+    <section class="rutina_layout hidden">
+        
+            <!-- HERO -->
+            <header class="hero">
+              <h1>Selecciona el grupo muscular</h1>
+              <p class="muted">Selecciona los musculos a trabajar — minimo 1, maximo 4</p>
+              <div id="selection-info" class="muted">Seleccionados: <span id="sel-count">0</span> / 4</div>
+            </header>
+        
+            <!-- GRID DE MUSCULOS -->
+            <main class="container">
+              <section id="muscles-grid" class="muscles-grid"></section>
+        
+              <div class="controls">
+                <button id="btn-next-to-exercises" class="btn primary" disabled>Siguiente</button>
+              </div>
+        
+              <!-- PANEL: BASICOS Y VARIANTES -->
+              <section id="panel-exercises" class="panel hidden">
+                <header>
+                  <h2>Musculo: <span id="panel-muscle-name"></span></h2>
+                  <p class="muted">Selecciona 1 basico y hasta 2 variantes</p>
+                </header>
+        
+                <h3>Basicos</h3>
+                <div id="basics-grid" class="card-grid"></div>
+        
+                <h3>Variantes</h3>
+                <div id="variants-grid" class="card-grid"></div>
+        
+                <div class="controls between">
+                  <button id="btn-prev-muscle" class="btn">Anterior</button>
+                  <button id="btn-next-muscle" class="btn primary" disabled>Siguiente musculo</button>
+                </div>
+              </section>
+        
+              <!-- PANEL: RESUMEN -->
+              <section id="panel-summary" class="panel hidden">
+                <h2>Resumen</h2>
+                <label class="muted">Nombre de la rutina</label>
+                <input id="rutina-name" placeholder="Ej: Pecho y Pierna - 3 dias" />
+        
+                <div id="summary-list" class="summary"></div>
+        
+                <div class="controls between">
+                  <button id="btn-edit" class="btn">Editar</button>
+                  <button id="btn-create" class="btn primary">Crear Rutina</button>
+                </div>
+        
+                <div id="result-message" class="muted"></div>
+              </section>
+            </main>
+        
+            <footer class="footer">
+              <p>© 2025 GTX Gym Training Xtreme</p>
+            </footer>
 
-    <!-- HERO -->
-    <header class="hero">
-      <h1>Selecciona el grupo muscular</h1>
-      <p class="muted">Selecciona los musculos a trabajar — minimo 1, maximo 4</p>
-      <div id="selection-info" class="muted">Seleccionados: <span id="sel-count">0</span> / 4</div>
-    </header>
-
-    <!-- GRID DE MUSCULOS -->
-    <main class="container">
-      <section id="muscles-grid" class="muscles-grid"></section>
-
-      <div class="controls">
-        <button id="btn-next-to-exercises" class="btn primary" disabled>Siguiente</button>
-      </div>
-
-      <!-- PANEL: BASICOS Y VARIANTES -->
-      <section id="panel-exercises" class="panel hidden">
-        <header>
-          <h2>Musculo: <span id="panel-muscle-name"></span></h2>
-          <p class="muted">Selecciona 1 basico y hasta 2 variantes</p>
-        </header>
-
-        <h3>Basicos</h3>
-        <div id="basics-grid" class="card-grid"></div>
-
-        <h3>Variantes</h3>
-        <div id="variants-grid" class="card-grid"></div>
-
-        <div class="controls between">
-          <button id="btn-prev-muscle" class="btn">Anterior</button>
-          <button id="btn-next-muscle" class="btn primary" disabled>Siguiente musculo</button>
-        </div>
-      </section>
-
-      <!-- PANEL: RESUMEN -->
-      <section id="panel-summary" class="panel hidden">
-        <h2>Resumen</h2>
-        <label class="muted">Nombre de la rutina</label>
-        <input id="rutina-name" placeholder="Ej: Pecho y Pierna - 3 dias" />
-
-        <div id="summary-list" class="summary"></div>
-
-        <div class="controls between">
-          <button id="btn-edit" class="btn">Editar</button>
-          <button id="btn-create" class="btn primary">Crear Rutina</button>
-        </div>
-
-        <div id="result-message" class="muted"></div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>© 2025 GTX Gym Training Xtreme</p>
-    </footer>
-
+    </section>    
+     
 
     <!-- Carga navbar -->
     <!--<script src="/src/components/navbar.js" defer></script>-->
@@ -83,6 +85,7 @@
    
     <script type="module" src="../../components/navbar.js"></script>
     <!--<script src="./ejercicios.js" defer></script>-->
+    <script type="module" src="../../sesion.js"></script>
 
     <script type="module" src="./crear_rutina.js"></script>
 

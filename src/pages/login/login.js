@@ -1,12 +1,7 @@
 import { toast } from 'wc-toast'
+import { getCookie } from '../../util';
 
 const loginForm = document.getElementById('login-form');
-
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-}
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL 
 loginForm.addEventListener('submit', async (e) => {

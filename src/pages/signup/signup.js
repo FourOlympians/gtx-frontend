@@ -2,12 +2,7 @@
 import { toast } from 'wc-toast';
 const loginForm = document.getElementById('login-form');                
 
-
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(";").shift();
-}
+import { getCookie } from '../../util.js'
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 console.log(apiBaseUrl)

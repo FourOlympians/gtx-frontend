@@ -1,6 +1,6 @@
+import { STATUS_LOGIN, isLogin, getCookie, apiBaseUrl } from './util.js'
 const sesion_section = document.getElementById('sesion_section');
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 const default_content = `
  <a id="sesion_ancor" href="/pages/login/"
                     class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
@@ -18,12 +18,6 @@ const default_content = `
                     </svg>
                 </button>
 `;
-
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-}
 
 
 const cerrar_sesion = async () => {
@@ -75,26 +69,16 @@ const checkSesion = async () => {
 
 
 
-        const response = await fetch(`${apiBaseUrl}/auth/verify/token`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': getCookie("csrf_access_token"),
-                },
-                credentials: 'include',
+        const { status, data: token } = await isLogin();
+        console.log(token)
 
-            }
-        )
-
-        if (response.ok) {
-            const data = await response.json();
+        if (status === STATUS_LOGIN.SUCCESS) {
             const btn = document.querySelector('#btn_cerrar');
             const ancor = document.querySelector('#ancor_login');
 
             btn.classList.remove('hidden');
             ancor.classList.add('hidden');
-            console.log(data);
+            //console.log(token);
             //sesion_section.innerHTML += button;
             //const msg = document.querySelector(".msg")
             //msg.textContent = "Bienvenido a nuestro menu de ventas!"

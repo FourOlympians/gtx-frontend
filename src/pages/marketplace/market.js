@@ -8,8 +8,28 @@ import { toast } from "wc-toast";
  */
 const $ = (arg) => document.querySelector(arg);
 const form = $('#form_search');
+
+/**
+ * @type {Producto[]}
+ */
 let productos = []
 
+/**
+ * @typedef Producto
+ * @property {Number} categoria_id 
+ * @property {string} categoria_nombre 
+ * @property {string} descripcion 
+ * @property {string} img_url 
+ * @property {string} nombre 
+ * @property {Number} precio 
+ * @property {Number} tipo 
+ */
+
+/**
+ * 
+ * @param {Producto[]} productos 
+ * @returns 
+ */
 const createProductos = (productos) => {
   return `
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
@@ -101,6 +121,7 @@ async function loadProducts() {
         } 
 
         productos = data;
+        console.log(productos);
 
         const productosHtml = createProductos(productos);
         renderProductos(productosHtml);
