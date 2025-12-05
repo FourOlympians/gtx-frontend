@@ -42,13 +42,13 @@ const nav_content = `
 
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
             <ul
-                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-700 rounded-lg bg-gray-900 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-700 rounded-lg bg-(--clr-surface-a10)  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
                 ${links.map(link => `
                     <li>
                         <a href="${link.href}"
                             class="
                                 ${window.location.pathname === link.href ? 'bg-red-700' : ''}
-                                block py-2 px-3 md:p-0 text-gray-200 rounded-sm 
+                                block sm:p-8 p-2 md:p-1 text-gray-200 rounded-sm 
                                 hover:bg-gray-700 hover:text-white 
                                 md:hover:text-red-500 md:hover:bg-transparent
                             " aria-current="page">${link.label}</a>

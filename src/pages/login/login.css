@@ -1,0 +1,10 @@
+
+.is-loading {
+        /* Styles for the loading state */
+        background-color: gray;
+        cursor: not-allowed;
+        opacity: 0.7;
+        /* Add a loading spinner or text if desired */
+}
+
+
